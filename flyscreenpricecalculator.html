@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fly Screen Price Calculator</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+        text-align: center;
+      }
+    </style>
+    <script>
+      function calculatePrice() {
+        var squareMeter = document.getElementById("squareMeter").value;
+        var pricePerSquareMeter = 1.9;
+		var quantity = document.getElementById("quantity").value;
+        var discountPercent = document.getElementById("discountPercent").value;
+        var totalPrice = squareMeter / 1000000 * pricePerSquareMeter * quantity * 3;
+        var discountAmount = totalPrice * discountPercent / 100;
+        totalPrice -= discountAmount;
+        document.getElementById("price").innerHTML = "$" + totalPrice.toFixed(2);
+        document.getElementById("discount").innerHTML = "$" + discountAmount.toFixed(2);
+      }
+    </script>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+  </head>
+  <body>
+    <h1><font face = "Verdana" size = "4" color = "#000000">Fly Screen Price Calculator</h1>
+    <table>
+      <tr>
+        <td>Total:</td>
+        <td><input type="text" id="squareMeter"></td>
+      </tr>
+	<tr>
+        <td>Quantity:</td>
+        <td><input type="text" id="quantity" value="1"></td>
+      </tr>
+      <tr>
+        <td>Discount percentage:</td>
+        <td><input type="text" id="discountPercent" value="0"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button onclick="calculatePrice()">Calculate Price</button></td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <th>Total Price:</th>
+        <td id="price"></td>
+      </tr>
+      <tr>
+        <th>Discount Amount:</th>
+        <td id="discount"></td>
+      </tr>
+    </table>
+	
+	<br>
+	
+<body>
+
+<br>
+<div data-ng-app="" data-ng-init="Length=0;Breadth=0">
+<tr>Height MM: <input type="number" ng-model="Length"></tr>
+<p>Width MM: <input type="number" ng-model="Breadth"></p>
+<b>Total</b> {{(Length*Breadth)}}
+
+</div>
+</body>
+	
+	
+  </body>
+</html>
